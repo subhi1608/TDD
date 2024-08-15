@@ -17,11 +17,21 @@ const add = (numbersStr) => {
         // Default delimiter case
         numbers = numbersStr;
     }
-	return numbers
-	.split(delimiter) 
-	.map(num => parseInt(num.trim(), 10)) 
-	.filter(num => !isNaN(num)) 
-	.reduce((sum, num) => sum + num, 0);
+	
+    // Process numbers
+    const numberArray = numbers
+        .split(delimiter) // Split using the determined delimiter
+        .map(num => parseInt(num.trim(), 10)); // Convert each item to integer
+
+    // Check for negative numbers
+    const negativeNumbers = numberArray.filter(num => num < 0);
+    if (negativeNumbers.length > 0) {
+        throw new Error(`negative numbers not allowed ${negativeNumbers.join(', ')}`);
+    }
+
+    return numberArray
+        .filter(num => !isNaN(num)) // Filter out NaN values in case of invalid input
+        .reduce((sum, num) => sum + num, 0);
 
 }
 module.exports = add;

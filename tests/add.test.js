@@ -33,4 +33,12 @@ test('handles large numbers with a custom delimiter', () => {
 	expect(add('//;\n1000000;2000000;3000000')).toBe(6000000);
 });
 
+test('throws an error when negative numbers are included', () => {
+	expect(() => add('//;\n1;2;-3')).toThrow('negative numbers not allowed -3');
+});
+
+test('throws an error with multiple negative numbers', () => {
+	expect(() => add('//;\n-1;-2;-3')).toThrow('negative numbers not allowed -1, -2, -3');
+});
+
 })
