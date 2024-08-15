@@ -16,8 +16,12 @@ To get started with this project, follow these steps:
 2. cd TDD
 
 3. Ensure you have Node.js (v18) installed. Then install the necessary dependencies:
+
+   ```bash
    npm install
 
 4. Try executing below scripts to see test cases up and running
+
+    ```bash
     npm test
 
