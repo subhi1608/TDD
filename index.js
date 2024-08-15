@@ -3,8 +3,9 @@ const add = (numbers) => {
 		return 0;
 	}
 	return numbers
-		.split(",")
-		.map(Number)
-		.reduce((acc, curr) => acc + curr, 0);
+		.split(/[\s,]+/)
+        .map(num => parseInt(num.trim(), 10))
+        .filter(num => !isNaN(num)) 
+        .reduce((sum, num) => sum + num, 0);
 };
 module.exports = add;
