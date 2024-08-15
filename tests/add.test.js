@@ -21,4 +21,16 @@ test('handles numbers separated by new lines only', () => {
 	expect(add('1\n2\n3')).toBe(6);
 });
 
+test('handles numbers with a custom semicolon delimiter', () => {
+	expect(add('//;\n1;2')).toBe(3);
+});
+
+test('handles numbers with a custom pipe delimiter', () => {
+	expect(add('//|\n1|2|3')).toBe(6);
+});
+
+test('handles large numbers with a custom delimiter', () => {
+	expect(add('//;\n1000000;2000000;3000000')).toBe(6000000);
+});
+
 })
